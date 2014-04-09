@@ -32,6 +32,8 @@ group :doc do
 end
 
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'simple_form'
+
 
 group :development, :test do
   gem 'rspec-rails'

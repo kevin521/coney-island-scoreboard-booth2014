@@ -4,7 +4,7 @@ class ScoresController < ApplicationController
   # GET /scores
   # GET /scores.json
   def index
-    @scores = Score.all
+    @scores = Score.all.by_score
   end
 
   # GET /scores/1
@@ -28,7 +28,7 @@ class ScoresController < ApplicationController
 
     respond_to do |format|
       if @score.save
-        format.html { redirect_to @score, notice: 'Score was successfully created.' }
+        format.html { redirect_to :back, notice: 'Score was successfully created.' }
         format.json { render action: 'show', status: :created, location: @score }
       else
         format.html { render action: 'new' }
