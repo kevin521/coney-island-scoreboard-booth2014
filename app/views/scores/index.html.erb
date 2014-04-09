@@ -1,29 +1,21 @@
-<h1><center>Coney Island Leaderboard</center></h1>
-</br>
+
 <div class = "container">
   <div class="table-responsive">
     <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Hole 1</th>
-          <th>Hole 2</th>
-          <th>Hole 3</th>
-          <th>Total Score</th>
-        </tr>
-      </thead>
-
-      <tbody class = "table-striped">
-        <% @scores.each do |score| %>
-          <tr>
-            <td><%= score.name %></td>
-            <td><%= score.hole1 %></td>
-            <td><%= score.hole2 %></td>
-            <td><%= score.hole3 %></td>
-            <td><%= score.total_score %></td>
-          </tr>
-        <% end %>
-      </tbody>
+      
+      <div id="refill-me">
+        <tbody class = "table-striped">
+          <% @scores[0,10].each do |score| %>
+            <tr class="<%= cycle("even", "odd") %>">
+              <td width="32%"><%= score.name %></td>
+              <td width="23%"><%= score.hole1 %></td>
+              <td width="15%"><%= score.hole2 %></td>
+              <td width="15%"><%= score.hole3 %></td>
+              <td width="15%"><%= score.total_score %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </div><!-- end refill me -->
     </table>
   </div>
 </div>
@@ -35,6 +27,22 @@
 <%= javascript_tag do %>
 $(document).ready(function() {
         // Refreshes the page every 5 seconds
-        setTimeout(function(){window.location.reload(1);}, 5000);
-    });
+        //setTimeout(function(){window.location.reload(1);}, 5000);
+        
+  $(function() {
+    startRefresh();
+  });
+
+  function startRefresh() {
+      setTimeout(startRefresh,5000);
+      $.get('/', function(data) {
+
+
+          var newtable = $(data).find('.table-striped');
+          $('.table-striped').replaceWith(newtable);    
+          console.log(newtable.html());
+      });
+  }      
+
+});
 <% end %>
