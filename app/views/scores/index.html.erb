@@ -32,3 +32,9 @@
 
 <%= link_to 'New Score', new_score_path %>
 
+<%= javascript_tag do %>
+$(document).ready(function() {
+        // Refreshes the page every 5 seconds
+        setTimeout(function(){window.location.reload(1);}, 5000);
+    });
+<% end %>
