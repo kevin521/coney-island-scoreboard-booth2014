@@ -1,4 +1,9 @@
 
+@font-face {
+  font-family: 'Coney';
+  src:font-url('coney.ttf') format('truetype');
+}
+
 body {
   background-image: image-url("background.jpg") ;
   background-size:cover;
