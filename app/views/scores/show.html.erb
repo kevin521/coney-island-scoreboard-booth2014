@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @score.name %>
+</p>
+
+<p>
+  <strong>Hole1:</strong>
+  <%= @score.hole1 %>
+</p>
+
+<p>
+  <strong>Hole2:</strong>
+  <%= @score.hole2 %>
+</p>
+
+<p>
+  <strong>Hole3:</strong>
+  <%= @score.hole3 %>
+</p>
+
+<%= link_to 'Edit', edit_score_path(@score) %> |
+<%= link_to 'Back', scores_path %>
